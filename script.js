@@ -8,8 +8,11 @@ function calculation(arg){
     if( box.style.color === "red"){
        box.style.color='';
        box.value='';
+       box.style.borderStyle="";
+       box.style.borderColor="";
     }
     box.value = box.value+arg;
+    
 }
 
 function cancelation(){
@@ -20,8 +23,8 @@ function cancelation(){
      }
     box.value = box.value.slice(0,-1);
     document.getElementById('result').innerHTML='';
-    document.getElementById('box').style.borderStyle="";
-    document.getElementById('box').style.borderColor="";
+    box.style.borderStyle="";
+    box.style.borderColor="";
 }
 
 function result(){
@@ -29,7 +32,15 @@ function result(){
     try{ 
     let result = eval(box.value);
    // box.value= result;
+   if (typeof result === "undefined") {
+    document.getElementById('result').innerHTML ='';
+   // console.log("Var is Box is :"+box+' result '+result)
+     return;  
+    }
+   
     document.getElementById('result').innerHTML = "= "+result;
+    box.style.borderStyle="";
+    box.style.borderColor="";
 
     }catch{
         box.value = "Give correct values";
@@ -57,5 +68,3 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
-
-
