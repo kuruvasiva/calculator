@@ -30,7 +30,8 @@ function cancelation(){
 function result(){
     let box = document.getElementById('box');
     try{ 
-    let result = eval(box.value);
+    let input = box.value.replace(/^0+(?=\d)/, '');    // Remove leading zeros
+    const result = eval(input);
    // box.value= result;
    if (typeof result === "undefined") {
     document.getElementById('result').innerHTML ='';
