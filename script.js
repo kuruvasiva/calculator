@@ -29,6 +29,11 @@ function cancelation(){
 
 function result(){
     let box = document.getElementById('box');
+    let regex = /[+\-*%\/]/;
+    let status = regex.test(box.value);
+    if(!status){
+        return;
+    }
     try{ 
     let input = box.value.replace(/^0+(?=\d)/, '');    // Remove leading zeros
     const result = eval(input);
@@ -39,7 +44,7 @@ function result(){
      return;  
     }
    
-    document.getElementById('result').innerHTML = "= "+result;
+    document.getElementById('result').innerHTML = result;
     box.style.borderStyle="";
     box.style.borderColor="";
 
